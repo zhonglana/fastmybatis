@@ -1,0 +1,24 @@
+#logging:
+#  fileLevel: INFO
+#  elkLevel: INFO
+#  level:
+#    com.tencent.cloud.iov.msgcenter.mybatis.area.mapper: DEBUG
+server.port: 9000
+spring:
+  application:
+    name: fastmybatis
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.0.249:3306/message-center?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&autoReconnect=true&failOverReadOnly=false&allowMultiQueries=true&useSSL=false
+    username: root
+    password: root
+mybatis:
+  typeHandlersPackage: com.lz.fastmybatis.mybatis.handler
+  basePackage: com.lz.fastmybatis.mybatis.mapper
+  mapper-locations: classpath*:com/lz/fastmybatis/mybatis/mapper/xml/*.xml
+  #fill:
+    #com.lz.fastmybatis.mybatis.handler.UserFillInsert:
+    #com.lz.fastmybatis.mybatis.handler.UserFillUpdate:
+  configuration:
+    map-underscore-to-camel-case: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
