@@ -20,13 +20,13 @@ import java.sql.SQLException;
  */
 @MappedJdbcTypes(JdbcType.VARCHAR)
 @MappedTypes({UserInfo.class})
-public class UserFillInsert extends BaseFill<UserInfo> {
+public class UserFillUpdate extends BaseFill<UserInfo> {
 
 	private String columnName = "user_info";
 
 	@Override
 	public FillType getFillType() {
-		return FillType.INSERT;
+		return FillType.UPDATE;
 	}
 
 	@Override
@@ -49,9 +49,6 @@ public class UserFillInsert extends BaseFill<UserInfo> {
 
 	@Override
 	protected UserInfo convertValue(Object columnValue) {
-		if(columnValue == null){
-			return null;
-		}
 		UserInfo userInfo = JSON.parseObject(columnValue.toString(), UserInfo.class);
 		return userInfo;
 	}
